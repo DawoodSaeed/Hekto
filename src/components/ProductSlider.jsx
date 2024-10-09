@@ -6,6 +6,7 @@ import product2 from "../assets/images/products/image 3.svg";
 import product3 from "../assets/images/products/image 1168.svg";
 import product4 from "../assets/images/products/image 1169.svg";
 import ProductCard from "./ProductCard";
+import Heading from "./Heading";
 
 const SliderContainer = styled.div`
   padding: 20px;
@@ -55,13 +56,6 @@ const SliderContainer = styled.div`
       }
     }
   }
-`;
-
-const SliderTitle = styled.h2`
-  font-size: clamp(1.5rem, 2vw, 2.5rem);
-  font-weight: bold;
-  color: #450077;
-  margin-bottom: 20px;
 `;
 
 // The React component
@@ -129,7 +123,7 @@ const ProductSlider = ({ title, style }) => {
 
   return (
     <SliderContainer customStyle={style}>
-      <SliderTitle>{title}</SliderTitle>
+      <Heading>{title}</Heading>
       <Slider {...settings}>
         {products.map((product, index) => (
           <ProductCard key={index} product={product} />

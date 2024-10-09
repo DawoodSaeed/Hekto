@@ -9,6 +9,7 @@ const TrendingProducts = styled.div`
   display: flex;
   height: 85vh;
   flex-direction: column;
+  overflow: hidden;
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 40px;
