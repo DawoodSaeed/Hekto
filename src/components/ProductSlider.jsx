@@ -58,7 +58,7 @@ const SliderContainer = styled.div`
 `;
 
 const SliderTitle = styled.h2`
-  font-size: 24px;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
   font-weight: bold;
   color: #450077;
   margin-bottom: 20px;

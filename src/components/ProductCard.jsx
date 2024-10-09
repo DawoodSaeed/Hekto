@@ -31,8 +31,8 @@ const ProductPrice = styled.p`
 const ProductCardWrapper = styled.div`
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
-  height: 300px;
+  max-height: 350px;
+  height: 350px;
   display: grid !important;
   grid-template-rows: 2fr 1fr;
   margin-bottom: 20px;
@@ -52,13 +52,16 @@ const ProductCardWrapper = styled.div`
 const ProductImage = styled.img`
   object-fit: cover;
   width: 60%;
-  height: 100%;
+  height: 60%;
   margin: 0 auto;
 `;
 
 const ProductImageContainer = styled.div`
   grid-row: 1/2;
   background-color: #f6f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const ProductCard = ({ product, index }) => {
   return (

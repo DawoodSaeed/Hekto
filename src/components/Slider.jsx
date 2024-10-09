@@ -7,6 +7,7 @@ const TrendingProducts = styled.div`
   background-color: #f2f0ff;
   padding: 20px;
   display: flex;
+  height: 85vh;
   flex-direction: column;
   @media (min-width: 768px) {
     flex-direction: row;
@@ -34,7 +35,7 @@ const TextSide = styled.div`
     flex: 1;
     align-items: flex-start;
     text-align: left;
-    margin-bottom: 0;
+    margin-bottom: 100px;
   }
 `;
 
@@ -43,14 +44,14 @@ const Heading = styled.h2`
   font-weight: var(--font-weight-bold);
   color: #000;
   font-family: var(--font-family-secondary);
-  margin-bottom: 10px;
-
+  margin: 20px 0px;
   @media (min-width: 768px) {
     font-size: var(--font-size-2xl);
   }
 
   @media (min-width: 1200px) {
-    font-size: var(--font-size-3xl);
+    font-size: 2.86vw;
+    line-height: 3.4vw;
   }
 `;
 
@@ -59,7 +60,7 @@ const ImageSide = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    max-width: 500px;
+    max-width: auto;
     height: auto;
     object-fit: cover;
   }
@@ -71,14 +72,20 @@ const ImageSide = styled.div`
 
 const BulbImage = styled.img`
   position: absolute;
-  top: -70px;
-  left: -350px;
+  top: -20px;
+  left: -320px;
+`;
+
+const PrimaryText = styled.p`
+  color: var(--color-pink);
+  font-weight: var(--font-weight-bold);
 `;
 
 const Slider = () => {
   return (
     <TrendingProducts>
       <TextSide>
+        <PrimaryText>Best Furniture for your Castle ...</PrimaryText>
         <Heading>New Furniture Collection Trends in 2020</Heading>
         <p className="light-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est
