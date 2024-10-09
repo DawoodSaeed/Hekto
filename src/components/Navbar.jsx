@@ -11,17 +11,18 @@ const StyledNavbar = styled.nav`
   align-items: center;
   padding: var(--spacing-md);
   border-bottom: 1px solid var(--color-border);
-
-  @media (max-width: 768px) {
-    padding: var(--spacing-sm);
+  position: relative;
+  z-index: 10;
+  @media (min-width: 768px) {
+    padding: 40px;
   }
 
-  @media (min-width: 769px) and (max-width: 1200px) {
-    padding: var(--spacing-md) var(--spacing-lg);
+  @media (min-width: 1200px) {
+    padding: 10px 71px;
   }
 
-  @media (min-width: 1201px) {
-    padding: 20px 371px;
+  @media (min-width: 1440px) {
+    padding: 10px 400px;
   }
 `;
 

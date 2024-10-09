@@ -19,7 +19,11 @@ const StyledHeader = styled.header`
   }
 
   @media (min-width: 1200px) {
-    padding: 10px 371px;
+    padding: 10px 71px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 10px 400px;
   }
 `;
 

@@ -34,7 +34,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-  background-color: var(--color-pantone-purple);
 }
 
 img {
@@ -58,6 +57,7 @@ img {
   --color-off-navy-blue: #3f509e;
   --color-navy-blue: #151875;
   --color-sky-blue: #fb2e86;
+  
   --color-pantone-purple: #e0d3f5;
   --color-purple: #7e33e0;
   --color-off-purple: #9f63b5;
@@ -100,7 +100,6 @@ img {
 .container {
   max-width: 1920px;
   margin: 0 auto;
-  background-color: #fff;
   height: 100vh;
 }
 
