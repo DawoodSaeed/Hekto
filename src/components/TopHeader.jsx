@@ -6,15 +6,9 @@ const StyledHeader = styled.header`
   background-color: #7e33e0;
   width: 100%;
   color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 10px 20px;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
     padding: 10px 40px;
   }
 
@@ -27,12 +21,71 @@ const StyledHeader = styled.header`
   }
 `;
 
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    gap: 20px;
+  }
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+
+  @media (min-width: 576px) {
+    justify-content: flex-end;
+  }
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+const Select = styled.select`
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+`;
+
+const LoginLink = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+const CartIcon = styled.div`
+  cursor: pointer;
+`;
+
 const TopHeader = () => {
   return (
     <StyledHeader>
-      <div className="leftSide">
-        <div className="email-container">
-          <span className="email-icon">
+      <HeaderContent>
+        <LeftSide>
+          <ContactInfo>
             <svg
               width="16"
               height="16"
@@ -45,12 +98,9 @@ const TopHeader = () => {
                 fill="white"
               />
             </svg>
-          </span>
-          <span className="email-text">mhhasanul@gmail.com</span>
-        </div>
-
-        <div className="phone-container">
-          <span className="phone-icon">
+            <span>mhhasanul@gmail.com</span>
+          </ContactInfo>
+          <ContactInfo>
             <svg
               width="16"
               height="16"
@@ -67,53 +117,47 @@ const TopHeader = () => {
                 fill="white"
               />
             </svg>
-          </span>
-          <span className="phone-text">(12345)67890</span>
-        </div>
-      </div>
-      <div className="rightSide">
-        <div className="language-selector">
-          <select defaultValue="EN">
+            <span>(12345)67890</span>
+          </ContactInfo>
+        </LeftSide>
+        <RightSide>
+          <Select defaultValue="EN">
             <option value="EN">English</option>
             <option value="ES">Español</option>
             <option value="FR">Français</option>
-          </select>
-        </div>
-        <div className="currency-selector">
-          <select defaultValue="USD">
+          </Select>
+          <Select defaultValue="USD">
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
-          </select>
-        </div>
-
-        <div className="login">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-person"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-          </svg>
-          <Link to="/login">Login</Link>
-        </div>
-
-        <div className="cart">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-bag"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-          </svg>
-        </div>
-      </div>
+          </Select>
+          <LoginLink to="/login">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-person"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+            </svg>
+            Login
+          </LoginLink>
+          <CartIcon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-bag"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+            </svg>
+          </CartIcon>
+        </RightSide>
+      </HeaderContent>
     </StyledHeader>
   );
 };

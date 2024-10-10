@@ -8,9 +8,10 @@ const StyledButton = styled.button`
   padding: var(--spacing-md) var(--spacing-xl);
   cursor: pointer;
   font-size: var(--font-size-md);
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   &:hover {
     opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
   }
   ${(props) => props.customStyle}
 `;

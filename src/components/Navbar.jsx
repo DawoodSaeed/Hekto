@@ -9,12 +9,11 @@ const StyledNavbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md);
+  padding: 10px 20px;
   border-bottom: 1px solid var(--color-border);
-  position: relative;
-  z-index: 10;
+
   @media (min-width: 768px) {
-    padding: 40px;
+    padding: 10px 40px;
   }
 
   @media (min-width: 1200px) {
@@ -113,7 +112,7 @@ const HamburgerIcon = styled.div`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  z-index: 11;
 
   @media (min-width: 769px) {
     display: none;
@@ -122,11 +121,24 @@ const HamburgerIcon = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: var(--color-navy-blue);
+    background: ${({ open }) => (open ? "#ffffff" : "var(--color-navy-blue)")};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
+
+    &:first-child {
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+    }
+
+    &:nth-child(2) {
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
+    }
+
+    &:nth-child(3) {
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
+    }
   }
 `;
 
@@ -134,20 +146,41 @@ const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--color-background);
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom right,
+    var(--color-purple),
+    var(--color-pink)
+  );
   height: 100vh;
   width: 100%;
-  text-align: left;
+  text-align: center;
   padding: 2rem;
   position: fixed;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
-  z-index: 9;
+  z-index: 10;
 
   @media (min-width: 769px) {
     display: none;
+  }
+`;
+
+const MobileNavItem = styled(Link)`
+  padding: 1rem 0;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s linear;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--color-navy-blue);
   }
 `;
 
@@ -181,18 +214,28 @@ const Navbar = () => {
             </svg>
           </SearchButton>
         </SearchBar>
-        <HamburgerIcon onClick={() => setOpen(!open)}>
+        <HamburgerIcon open={open} onClick={() => setOpen(!open)}>
           <div />
           <div />
           <div />
         </HamburgerIcon>
       </NavbarRight>
       <MobileMenu open={open}>
-        <NavItem>Home</NavItem>
-        <NavItem>Shop</NavItem>
-        <NavItem>Blog</NavItem>
-        <NavItem>Contact</NavItem>
-        <NavItem>About</NavItem>
+        <MobileNavItem to="/" onClick={() => setOpen(false)}>
+          Home
+        </MobileNavItem>
+        <MobileNavItem to="/shop" onClick={() => setOpen(false)}>
+          Shop
+        </MobileNavItem>
+        <MobileNavItem to="/blog" onClick={() => setOpen(false)}>
+          Blog
+        </MobileNavItem>
+        <MobileNavItem to="/contact" onClick={() => setOpen(false)}>
+          Contact
+        </MobileNavItem>
+        <MobileNavItem to="/about" onClick={() => setOpen(false)}>
+          About
+        </MobileNavItem>
       </MobileMenu>
     </StyledNavbar>
   );

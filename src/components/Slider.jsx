@@ -10,6 +10,8 @@ const TrendingProducts = styled.div`
   height: 85vh;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 40px;
@@ -31,7 +33,6 @@ const TextSide = styled.div`
   align-items: center;
   text-align: center;
   margin-bottom: 20px;
-  position: relative;
   @media (min-width: 768px) {
     flex: 1;
     align-items: flex-start;
@@ -73,8 +74,24 @@ const ImageSide = styled.div`
 
 const BulbImage = styled.img`
   position: absolute;
-  top: -20px;
-  left: -320px;
+  top: 0px;
+  left: 0;
+  display: none;
+
+  @media (min-width: 768px) {
+    left: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    left: 20px;
+    display: block;
+    width: 10vw;
+  }
+
+  @media (min-width: 1440px) {
+    left: 100px;
+    width: 20vw;
+  }
 `;
 
 const PrimaryText = styled.p`

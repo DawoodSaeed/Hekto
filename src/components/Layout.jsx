@@ -54,8 +54,10 @@ const Breadcrumb = styled.nav`
 
 const BreadcrumbList = styled.ol`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
+  align-items: center;
 
   @media (min-width: 768px) {
     justify-content: flex-start;
@@ -64,6 +66,13 @@ const BreadcrumbList = styled.ol`
 
 const BreadcrumbListItem = styled.li`
   list-style: none;
+  display: inline-flex;
+  align-items: center;
+
+  &:not(:last-child)::after {
+    content: "/";
+    margin: 0 8px;
+  }
 
   &[aria-current="page"] > a {
     color: var(--color-pink);
@@ -80,11 +89,23 @@ const BreadcrumbLink = styled(Link)`
   color: #000;
 `;
 
+const renderBreadcrumbItems = (path) => {
+  const pathSegments = path.split("/").filter((segment) => segment !== "");
+  return pathSegments.map((segment, index) => {
+    const url = `/${pathSegments.slice(0, index + 1).join("/")}`;
+    const title = segment.charAt(0).toUpperCase() + segment.slice(1);
+    return (
+      <BreadcrumbListItem key={url}>
+        <BreadcrumbLink to={url}>{title}</BreadcrumbLink>
+      </BreadcrumbListItem>
+    );
+  });
+};
+
 const Layout = () => {
   const location = useLocation();
 
   const pathTitles = {
-    "/login": "My Account",
     "/about": "About Us",
     "/contact": "Contact Us",
     "/shop": "Shop",
@@ -105,12 +126,7 @@ const Layout = () => {
               <BreadcrumbListItem>
                 <BreadcrumbLink to="/">Home</BreadcrumbLink>
               </BreadcrumbListItem>
-              <span>&gt;</span>
-              <BreadcrumbListItem aria-current="page">
-                <BreadcrumbLink to={location.pathname}>
-                  {location.pathname.replace("/", "")}
-                </BreadcrumbLink>
-              </BreadcrumbListItem>
+              {renderBreadcrumbItems(location.pathname)}
             </BreadcrumbList>
           </Breadcrumb>
         </ContentWrapper>
